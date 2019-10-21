@@ -1,5 +1,11 @@
 Facebook Messenger Analysis:
 
+Setup
+node js and postgres must be installed, table called messenger must be created, then ->
+npm install ->
+npm run start ->
+localhost:8080
+
 Initial Phase
 most used words
 most used emojis

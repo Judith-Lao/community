@@ -126,7 +126,19 @@ var Main = function (_Component) {
   _createClass(Main, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement('div', { id: 'app', className: 'row container' });
+      return _react2.default.createElement(
+        'div',
+        { id: 'app', className: 'row container' },
+        _react2.default.createElement(
+          'main',
+          null,
+          _react2.default.createElement(
+            'h1',
+            null,
+            'Judith and Matt'
+          )
+        )
+      );
     }
   }]);
 

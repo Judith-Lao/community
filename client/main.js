@@ -4,6 +4,9 @@ import React, {Component} from 'react'
   render () {
     return (
       <div id='app' className='row container'>
+        <main>
+          <h1>Judith and Matt</h1>
+        </main>
       </div>
     )
   }
