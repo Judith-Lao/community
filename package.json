@@ -1,10 +1,9 @@
 {
-  "name": "messenger",
+  "name": "community",
   "version": "1.0.0",
-  "description": "Analyzes facebook messages",
+  "description": "reddit clone",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./test/account.test.js",
     "start": "npm run start-server & npm run build-watch",
     "start-server": "nodemon --watch server -e js,html server/app.js",
     "build-watch": "webpack -w",
@@ -27,11 +26,14 @@
     "volleyball": "^1.5.1"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
+    "@babel/core": "7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/polyfill": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "@babel/register": "^7.8.3",
+    "@babel/runtime": "^7.8.3",
     "nodemon": "^1.14.11",
     "webpack": "^4.16.1",
     "webpack-cli": "^3.1.0"

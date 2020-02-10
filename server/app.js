@@ -8,3 +8,11 @@ const PORT = 8080
   console.log('database synced!')
   app.listen(PORT, () => console.log(`server on port ${PORT}`))
 })
+
+// const init = async() => {
+//   db.authenticate().then(() => {
+//     console.log('connected to the database');
+//   })
+//   db.sync();
+// }
+// init()
