@@ -4,15 +4,14 @@
 const app = require('./index')
 const PORT = 8080
 
- db.sync().then(() => {
-  console.log('database synced!')
-  app.listen(PORT, () => console.log(`server on port ${PORT}`))
-})
+const init = async() => {
+  db.authenticate().then(() => {
+    console.log('connected to the database');
+  })
+  db.sync().then(() => {
+    console.log('database synced!')
+    app.listen(PORT, () => console.log(`server on port ${PORT}`))
+  })
+}
 
-// const init = async() => {
-//   db.authenticate().then(() => {
-//     console.log('connected to the database');
-//   })
-//   db.sync();
-// }
-// init()
+init()
