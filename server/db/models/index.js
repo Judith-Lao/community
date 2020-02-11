@@ -1,7 +1,7 @@
-const User = require('./user')
+const Account = require('./account')
 
 //associations
 
 module.exports = {
-  User
+  Account
 }

@@ -1,7 +1,7 @@
 const db = require('./database')
-const User = require('./models/user')
+const Account = require('./models/account')
 
  module.exports = {
   db,
-  User
+  Account
 }

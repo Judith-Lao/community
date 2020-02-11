@@ -1,12 +1,12 @@
 const router = require('express').Router()
-const {User} = require('../db/models')
+const {Account} = require('../db/models')
 
 router.get('/', async (req, res, next) => {
   try {
-    const users = await User.findAll({
-      attributes: ['id', 'email']
+    const accounts = await Account.findAll({
+      attributes: ['id', 'name']
     })
-    res.json(users)
+    res.json(accounts)
   } catch (err) {
     next(err)
   }

@@ -99,7 +99,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-/* harmony import */ var _components_Homepage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Homepage */ "./client/components/Homepage.js");
+/* harmony import */ var _components_LoginScreen__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/LoginScreen */ "./client/components/LoginScreen.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -140,10 +140,10 @@ function (_Component) {
         id: "app"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/"
-      }, "Home"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Community"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+      }, "Login"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Community"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
         path: "/",
-        component: _components_Homepage__WEBPACK_IMPORTED_MODULE_2__["default"]
+        component: _components_LoginScreen__WEBPACK_IMPORTED_MODULE_2__["default"]
       })))));
     }
   }]);
@@ -155,16 +155,16 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./client/components/Homepage.js":
-/*!***************************************!*\
-  !*** ./client/components/Homepage.js ***!
-  \***************************************/
+/***/ "./client/components/LoginScreen.js":
+/*!******************************************!*\
+  !*** ./client/components/LoginScreen.js ***!
+  \******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Homepage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return LoginScreen; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -183,9 +183,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -194,38 +194,54 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Homepage =
+var LoginScreen =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Homepage, _Component);
+  _inherits(LoginScreen, _Component);
 
-  function Homepage(props) {
+  function LoginScreen(props) {
     var _this;
 
-    _classCallCheck(this, Homepage);
+    _classCallCheck(this, LoginScreen);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Homepage).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(LoginScreen).call(this, props));
     _this.state = {
-      posts: []
+      accounts: [],
+      currentAccount: {}
     };
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(Homepage, [{
+  _createClass(LoginScreen, [{
     key: "componentDidMount",
     value: function () {
       var _componentDidMount = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee() {
+        var _ref, data;
+
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                _context.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/accounts');
+
+              case 2:
+                _ref = _context.sent;
+                data = _ref.data;
+                this.setState({
+                  accounts: data
+                });
+                console.log("accounts in componentMounted", this.state.accounts);
+
+              case 6:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee);
+        }, _callee, this);
       }));
 
       function componentDidMount() {
@@ -235,13 +251,56 @@ function (_Component) {
       return componentDidMount;
     }()
   }, {
+    key: "handleClick",
+    value: function () {
+      var _handleClick = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee2(account) {
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return this.setState({
+                  currentAccount: account
+                });
+
+              case 2:
+                console.log(this.state.currentAccount);
+
+              case 3:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function handleClick(_x) {
+        return _handleClick.apply(this, arguments);
+      }
+
+      return handleClick;
+    }()
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Hello");
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Hello! Who are you?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.state.accounts ? this.state.accounts.map(function (account) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: account.id
+        }, "single account, ", account.name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          onClick: function onClick() {
+            return _this2.handleClick(account);
+          }
+        }, "LoggedIn"));
+      }) : null));
     }
   }]);
 
-  return Homepage;
+  return LoginScreen;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
@@ -4833,10 +4892,10 @@ function generateMissingPluginMessage(missingPluginName, loc, codeFrame) {
 /*!***********************************************!*\
   !*** ./node_modules/@babel/core/package.json ***!
   \***********************************************/
-/*! exports provided: _from, _id, _inBundle, _integrity, _location, _phantomChildren, _requested, _requiredBy, _resolved, _shasum, _spec, _where, author, browser, bundleDependencies, dependencies, deprecated, description, devDependencies, engines, homepage, keywords, license, main, name, repository, version, default */
+/*! exports provided: _args, _development, _from, _id, _inBundle, _integrity, _location, _phantomChildren, _requested, _requiredBy, _resolved, _spec, _where, author, browser, dependencies, description, devDependencies, engines, homepage, keywords, license, main, name, repository, version, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"_from\":\"@babel/core@7.0.0\",\"_id\":\"@babel/core@7.0.0\",\"_inBundle\":false,\"_integrity\":\"sha512-nrvxS5u6QUN5gLl1GEakIcmOeoUHT1/gQtdMRq18WFURJ5osn4ppJLVSseMQo4zVWKJfBTF4muIYijXUnKlRLQ==\",\"_location\":\"/@babel/core\",\"_phantomChildren\":{},\"_requested\":{\"type\":\"version\",\"registry\":true,\"raw\":\"@babel/core@7.0.0\",\"name\":\"@babel/core\",\"escapedName\":\"@babel%2fcore\",\"scope\":\"@babel\",\"rawSpec\":\"7.0.0\",\"saveSpec\":null,\"fetchSpec\":\"7.0.0\"},\"_requiredBy\":[\"#DEV:/\",\"#USER\"],\"_resolved\":\"https://registry.npmjs.org/@babel/core/-/core-7.0.0.tgz\",\"_shasum\":\"0cb0c0fd2e78a0a2bec97698f549ae9ce0b99515\",\"_spec\":\"@babel/core@7.0.0\",\"_where\":\"/Users/judithlao/Desktop/my-projects/messenger\",\"author\":{\"name\":\"Sebastian McKenzie\",\"email\":\"sebmck@gmail.com\"},\"browser\":{\"./lib/config/files/index.js\":\"./lib/config/files/index-browser.js\",\"./lib/transform-file.js\":\"./lib/transform-file-browser.js\"},\"bundleDependencies\":false,\"dependencies\":{\"@babel/code-frame\":\"^7.0.0\",\"@babel/generator\":\"^7.0.0\",\"@babel/helpers\":\"^7.0.0\",\"@babel/parser\":\"^7.0.0\",\"@babel/template\":\"^7.0.0\",\"@babel/traverse\":\"^7.0.0\",\"@babel/types\":\"^7.0.0\",\"convert-source-map\":\"^1.1.0\",\"debug\":\"^3.1.0\",\"json5\":\"^0.5.0\",\"lodash\":\"^4.17.10\",\"resolve\":\"^1.3.2\",\"semver\":\"^5.4.1\",\"source-map\":\"^0.5.0\"},\"deprecated\":false,\"description\":\"Babel compiler core.\",\"devDependencies\":{\"@babel/helper-transform-fixture-test-runner\":\"^7.0.0\",\"@babel/register\":\"^7.0.0\"},\"engines\":{\"node\":\">=6.9.0\"},\"homepage\":\"https://babeljs.io/\",\"keywords\":[\"6to5\",\"babel\",\"classes\",\"const\",\"es6\",\"harmony\",\"let\",\"modules\",\"transpile\",\"transpiler\",\"var\",\"babel-core\",\"compiler\"],\"license\":\"MIT\",\"main\":\"lib/index.js\",\"name\":\"@babel/core\",\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/babel/babel/tree/master/packages/babel-core\"},\"version\":\"7.0.0\"}");
+module.exports = JSON.parse("{\"_args\":[[\"@babel/core@7.0.0\",\"/Users/judithlao/Desktop/my-projects/community\"]],\"_development\":true,\"_from\":\"@babel/core@7.0.0\",\"_id\":\"@babel/core@7.0.0\",\"_inBundle\":false,\"_integrity\":\"sha512-nrvxS5u6QUN5gLl1GEakIcmOeoUHT1/gQtdMRq18WFURJ5osn4ppJLVSseMQo4zVWKJfBTF4muIYijXUnKlRLQ==\",\"_location\":\"/@babel/core\",\"_phantomChildren\":{},\"_requested\":{\"type\":\"version\",\"registry\":true,\"raw\":\"@babel/core@7.0.0\",\"name\":\"@babel/core\",\"escapedName\":\"@babel%2fcore\",\"scope\":\"@babel\",\"rawSpec\":\"7.0.0\",\"saveSpec\":null,\"fetchSpec\":\"7.0.0\"},\"_requiredBy\":[\"#DEV:/\"],\"_resolved\":\"https://registry.npmjs.org/@babel/core/-/core-7.0.0.tgz\",\"_spec\":\"7.0.0\",\"_where\":\"/Users/judithlao/Desktop/my-projects/community\",\"author\":{\"name\":\"Sebastian McKenzie\",\"email\":\"sebmck@gmail.com\"},\"browser\":{\"./lib/config/files/index.js\":\"./lib/config/files/index-browser.js\",\"./lib/transform-file.js\":\"./lib/transform-file-browser.js\"},\"dependencies\":{\"@babel/code-frame\":\"^7.0.0\",\"@babel/generator\":\"^7.0.0\",\"@babel/helpers\":\"^7.0.0\",\"@babel/parser\":\"^7.0.0\",\"@babel/template\":\"^7.0.0\",\"@babel/traverse\":\"^7.0.0\",\"@babel/types\":\"^7.0.0\",\"convert-source-map\":\"^1.1.0\",\"debug\":\"^3.1.0\",\"json5\":\"^0.5.0\",\"lodash\":\"^4.17.10\",\"resolve\":\"^1.3.2\",\"semver\":\"^5.4.1\",\"source-map\":\"^0.5.0\"},\"description\":\"Babel compiler core.\",\"devDependencies\":{\"@babel/helper-transform-fixture-test-runner\":\"^7.0.0\",\"@babel/register\":\"^7.0.0\"},\"engines\":{\"node\":\">=6.9.0\"},\"homepage\":\"https://babeljs.io/\",\"keywords\":[\"6to5\",\"babel\",\"classes\",\"const\",\"es6\",\"harmony\",\"let\",\"modules\",\"transpile\",\"transpiler\",\"var\",\"babel-core\",\"compiler\"],\"license\":\"MIT\",\"main\":\"lib/index.js\",\"name\":\"@babel/core\",\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/babel/babel/tree/master/packages/babel-core\"},\"version\":\"7.0.0\"}");
 
 /***/ }),
 
