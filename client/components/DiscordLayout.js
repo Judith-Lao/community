@@ -20,7 +20,7 @@ export default class DiscordLayout extends Component {
 
   render() {
     return (
-      <div>
+      <div className="discord">
         Hello this is the Discord.
         <div>
           {this.state.posts && this.state.posts.map(post => <div>{post.content}</div>)}

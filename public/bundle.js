@@ -242,7 +242,9 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "This is the blog.");
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "blog"
+      }, "This is the blog.");
     }
   }]);
 
@@ -352,7 +354,9 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Hello this is the Discord.", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.posts && this.state.posts.map(function (post) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "discord"
+      }, "Hello this is the Discord.", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.posts && this.state.posts.map(function (post) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, post.content);
       })));
     }
