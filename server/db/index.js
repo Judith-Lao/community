@@ -1,7 +1,12 @@
 const db = require('./database')
-const Account = require('./models/account')
+const Account = require('./account')
+const Post = require('./post')
 
- module.exports = {
+Account.hasMany(Post)
+Post.belongsTo(Account)
+
+module.exports = {
   db,
-  Account
+  Account,
+  Post
 }

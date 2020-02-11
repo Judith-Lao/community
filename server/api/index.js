@@ -1,10 +1,9 @@
-'use strict'
+const router = require('express').Router()
 
- const router = require('express').Router()
+router.use('/accounts', require('./accounts'))
+router.use('/posts', require('./posts'))
 
- router.use('/accounts', require('./accounts'))
-
- router.use((req, res, next) => {
+router.use((req, res, next) => {
   const err = new Error('API route not found!')
   err.status = 404
   next(err)

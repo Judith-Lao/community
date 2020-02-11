@@ -1,4 +1,4 @@
-const { db, Account } = require("../server/db");
+const { db, Account, Post } = require("../server/db");
 
 async function seed() {
   await db.sync({ force: true })
@@ -15,6 +15,21 @@ async function seed() {
     Account.create({
       name: "Griffin",
       password: "123"
+    })
+  ])
+
+  await Promise.all([
+    Post.create({
+      content: "This is my first post",
+      allowComments: true,
+      type: "Discord",
+      accountId: 2
+    }),
+    Post.create({
+      content: "This is my second post",
+      allowComments: true,
+      type: "Discord",
+      accountId: 2
     })
   ])
 }

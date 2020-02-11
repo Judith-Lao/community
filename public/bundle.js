@@ -242,7 +242,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "This is the blog");
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "This is the blog.");
     }
   }]);
 
@@ -304,7 +304,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(DiscordLayout).call(this, props));
     _this.state = {
-      communities: []
+      posts: []
     };
     return _this;
   }
@@ -315,13 +315,27 @@ function (_Component) {
       var _componentDidMount = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee() {
+        var _ref, data;
+
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                console.log(this.props.currentAccount);
+                _context.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/posts');
 
-              case 1:
+              case 2:
+                _ref = _context.sent;
+                data = _ref.data;
+                _context.next = 6;
+                return this.setState({
+                  posts: data
+                });
+
+              case 6:
+                console.log(this.state.posts);
+
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -338,7 +352,9 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Hello this is the Discord.");
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Hello this is the Discord.", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.posts && this.state.posts.map(function (post) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, post.content);
+      })));
     }
   }]);
 
