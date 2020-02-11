@@ -15,10 +15,6 @@ async function seed() {
     Account.create({
       name: "Griffin",
       password: "123"
-    }),
-    Account.create({
-      name: "Kat",
-      password: "123"
     })
   ])
 }

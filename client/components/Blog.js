@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 
-export default class DiscordLayout extends Component {
+export default class Blog extends Component {
 
   constructor(props) {
     super(props)
@@ -17,7 +17,7 @@ export default class DiscordLayout extends Component {
   render() {
     return (
       <div>
-        Hello this is the Discord.
+        This is the blog.
       </div>
     )
   }
