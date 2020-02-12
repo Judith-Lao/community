@@ -2,12 +2,15 @@ const Sequelize = require('sequelize')
 const db = require('./database')
 
 const Post = db.define('post', {
- content: {
-   type: Sequelize.TEXT,
+ title: {
+   type: Sequelize.STRING,
    allowNull: false,
    validate: {
      notEmpty: true
    }
+ },
+ content: {
+   type: Sequelize.TEXT
  },
  allowComments: {
    type: Sequelize.BOOLEAN,

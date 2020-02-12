@@ -1,4 +1,4 @@
-const { db, Account, Post } = require("../server/db");
+const { db, Account, Post, Comment } = require("../server/db");
 
 async function seed() {
   await db.sync({ force: true })
@@ -20,16 +20,27 @@ async function seed() {
 
   await Promise.all([
     Post.create({
-      content: "This is my first post",
+      title: "How many of you could care less about celebrating your birthday?",
+      content: "I know a lot of people get excited about their birthday but I just don’t see the big deal. It’s not anything I accomplished, it’s just the day I was born. I’m not trying to hate on anyone who does like to celebrate theirs. I mean my wife loves celebrating hers, mine, and our sons. I just never get excited about mine. Was just curious if any others felt the same?",
       allowComments: true,
       type: "Discord",
       accountId: 2
     }),
     Post.create({
-      content: "This is my second post",
+      title: "This absolute gem I stumbled upon today while refactoring a 2 year old React codebase.",
+      content: "newBooking(data) { let ok = true; if (ok) { const res = null; guestBooking(data, this.guestBookingCallback); } }",
       allowComments: true,
       type: "Discord",
       accountId: 2
+    })
+  ])
+
+  await Promise.all([
+    Comment.create({
+      content: "This is pretty cool.",
+      postId: 1,
+      commentId: null,
+      accountId: 1
     })
   ])
 }

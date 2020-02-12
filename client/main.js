@@ -1,24 +1,21 @@
 import React, {Component} from 'react'
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
-import DiscordLayout from './components/DiscordLayout'
+import SinglePost from './components/SinglePost'
 import Homepage from './components/Homepage'
+import DiscordLayout from './components/DiscordLayout'
 
  export default class Main extends Component {
   render () {
     return (
       <Router>
       <div id='app'>
-      <nav>
-          <div>
-            <Link to='/'>Home</Link>
-            {/* <Link to='/discord'>Discord</Link> */}
-          </div>
-        </nav>
-
         <main>
-          <h1>Community</h1>
+          <nav>
+            Community
+          </nav>
           <div>
-            {/* <Route exact path='/discord' component={DiscordLayout} /> */}
+            <Route exact path='/posts/:postId' component={SinglePost} />
+            <Route exact path='/posts/' component={DiscordLayout} />
             <Route exact path='/' component={Homepage} />
           </div>
         </main>
