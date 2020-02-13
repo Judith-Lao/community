@@ -36,11 +36,35 @@ async function seed() {
   ])
 
   await Promise.all([
-    Comment.create({
+    await Comment.create({
       content: "This is pretty cool.",
       postId: 1,
       commentId: null,
       accountId: 1
+    }),
+    await Comment.create({
+      content: "I guess.",
+      postId: 1,
+      commentId: 1,
+      accountId: 2
+    }),
+    await Comment.create({
+      content: "What does I guess mean",
+      postId: 1,
+      commentId: 2,
+      accountId: 1
+    }),
+    await Comment.create({
+      content: "Yes I feel the same",
+      postId: 1,
+      commentId: null,
+      accountId: 3
+    }),
+    await Comment.create({
+      content: "It means I guess",
+      postId: 1,
+      commentId: 3,
+      accountId: 2
     })
   ])
 }
